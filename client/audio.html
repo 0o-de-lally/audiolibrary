@@ -1,0 +1,80 @@
+<template name="audio">
+  <!-- {{#if Template.subscriptionsReady}}
+  ready
+  {{/if}} -->
+    <div class="container">
+        <div class="row">
+          <!-- <div> -->
+            <div class="col s2 switch">
+              <label>
+                <input type="checkbox" id='missing-files'>
+                <span class="lever"></span>
+                Missing Files
+              </label>
+            </div>
+            <div class="col s2 switch">
+              <label>
+                <input type="checkbox" id='missing-meta'>
+                <span class="lever"></span>
+                Missing Meta
+              </label>
+            </div>
+        <!-- </div> -->
+      </div>
+      <table>
+        <thead>
+          <tr>
+              <th>Name</th>
+              <!-- <th>Missing Meta</th>
+              <th>Missing File</th> -->
+              <th>Stage</th>
+
+              <th>Tags</th>
+
+          </tr>
+        </thead>
+
+        <tbody>
+            {{#each list}}
+          <tr>
+            <td>{{this.filename}} - {{createdDate this.created}}</td>
+            <!-- <td>{{#unless this.created}} No Meta {{/unless}}</td>
+            <td>{{#unless this.hash}} No File {{/unless}}</td> -->
+            <td>
+              <!-- <p>
+                <input type="checkbox" id="test5" />
+                <label for="test5">Released</label>
+                <label for="test5">Someday</label>
+
+              </p> -->
+                <!-- Dropdown Trigger -->
+                <a class='dropdown-button btn' href='#' data-activates='dropdown-{{this._id}}'>{{this.stage}}</a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown-{{this._id}}' class='dropdown-content'>
+                  <li class='stage-option' data-id="{{this._id}}" data-value="released"><a href="#!">Released</a></li>
+                  <li class='stage-option' data-id="{{this._id}}" data-value="next"><a href="#!">Next</a></li>
+                  <li class='stage-option' data-id="{{this._id}}" data-value="practice"><a href="#!">Practice</a></li>
+                  <li class='stage-option' data-id="{{this._id}}" data-value="bank"><a href="#!">Bank</a></li>
+                  <li class='stage-option' data-id="{{this._id}}" data-value="bank"><a href="#!">Version</a></li>
+
+
+                </ul>
+
+            </td>
+            <td>
+              <p>
+                <input class ='star-checkbox' type="checkbox" checked="{{#if this.starred}}checked{{/if}}" data-id="{{this._id}}" id="check-star-{{this._id}}" />
+                <label for="check-star-{{this._id}}"><i class="material-icons">star</i></label>
+              </p>
+            </td>
+
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+
+
+</template>
